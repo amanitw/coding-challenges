@@ -19,7 +19,7 @@ import java.util.stream.Collectors;
 public class Application {
 
 	public static void main(String[] args) throws IOException {
-		//SpringApplication.run(Application.class, args);
+		SpringApplication.run(Application.class, args);
 //		PostAPIClient client = new PostAPIClient();
 //		Cache fileCache = new FileCache();
 //		List<Post> posts = client.fetchPost();
@@ -33,8 +33,11 @@ public class Application {
 //		tcpServer.start(args);
 
 
-		TCPServer tcpServer = new TCPServer();
-		tcpServer.startup();
+//		TCPServer tcpServer = new TCPServer();
+//		tcpServer.startup();
+
+
+
 	}
 
 }
