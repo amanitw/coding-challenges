@@ -40,6 +40,15 @@ public class Controller {
         return new ResponseEntity<>("location: "+longUrl,HttpStatus.FOUND);
     }
 
+    @DeleteMapping("{id}")
+    public ResponseEntity<?> deleteShortUrl(@PathVariable String id){
+            String longUrl = urlShortener.removeShortUrl(id);
+            if (longUrl == null){
+                return new ResponseEntity<>("URL not Found",HttpStatus.BAD_REQUEST);
+            }
+            return new ResponseEntity<>("Deleted Url",HttpStatus.OK);
+    }
+
     private boolean isValid(String url) {
         try {
             new URL(url);

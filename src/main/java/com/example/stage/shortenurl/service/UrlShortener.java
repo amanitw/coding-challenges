@@ -32,4 +32,14 @@ public class UrlShortener {
         String longUrl = storage.getLongUrl(shortUrl);
         return longUrl;
     }
+
+    public String removeShortUrl(String id){
+        String shortUrl = baseUrl+id;
+        String longUrl = storage.getLongUrl(shortUrl);
+        if (longUrl == null){
+            return null;
+        }
+        storage.removeUrl(shortUrl);
+        return longUrl;
+    }
 }

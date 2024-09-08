@@ -21,4 +21,11 @@ public class InMemoryStorage implements Storage{
     public String getLongUrl(String shortUrl) {
         return shortToLongUrlMap.get(shortUrl);
     }
+
+    @Override
+    public void removeUrl(String shortUrl) {
+        String longUrl = shortToLongUrlMap.get(shortUrl);
+        shortToLongUrlMap.remove(shortUrl);
+        longToShortUrlMap.remove(longUrl);
+    }
 }
