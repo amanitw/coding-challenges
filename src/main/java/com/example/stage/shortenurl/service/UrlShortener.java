@@ -2,18 +2,16 @@ package com.example.stage.shortenurl.service;
 
 import com.example.stage.shortenurl.algo.IdGenerator;
 import com.example.stage.shortenurl.dao.Storage;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-
+@Service
 public class UrlShortener {
+    @Autowired
     private IdGenerator idGenerator;
     private String baseUrl = "http://tinyurl.com/";
+    @Autowired
     private Storage storage;
-
-    public UrlShortener(IdGenerator idGenerator, Storage storage) {
-        this.idGenerator = idGenerator;
-        this.storage = storage;
-    }
 
     public String shortUrl(String longUrl) {
         String tinyUrl = storage.getShortUrl(longUrl);

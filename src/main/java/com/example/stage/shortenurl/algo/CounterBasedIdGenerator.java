@@ -1,5 +1,8 @@
 package com.example.stage.shortenurl.algo;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class CounterBasedIdGenerator implements IdGenerator{
     private static int counter=56738493;
     private static final String alphaNumeric= "abcdefghijklmopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";

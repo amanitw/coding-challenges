@@ -1,8 +1,11 @@
 package com.example.stage.shortenurl.dao;
 
+import org.springframework.stereotype.Component;
+
 import java.util.HashMap;
 import java.util.Map;
 
+@Component
 public class InMemoryStorage implements Storage{
     private Map<String,String> shortToLongUrlMap = new HashMap<>();
     private Map<String,String> longToShortUrlMap = new HashMap<>();

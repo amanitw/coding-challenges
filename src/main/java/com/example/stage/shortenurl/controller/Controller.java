@@ -5,6 +5,7 @@ import com.example.stage.shortenurl.dao.InMemoryStorage;
 import com.example.stage.shortenurl.model.Response;
 import com.example.stage.shortenurl.model.UrlRequest;
 import com.example.stage.shortenurl.service.UrlShortener;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,7 +16,8 @@ import java.net.URL;
 @RestController
 public class Controller {
 
-    private UrlShortener urlShortener = new UrlShortener(new CounterBasedIdGenerator(), new InMemoryStorage());
+    @Autowired
+    private UrlShortener urlShortener;
 
     @PostMapping("/")
     public ResponseEntity<?> shortenUrl(@RequestBody UrlRequest urlRequest) {
