@@ -14,6 +14,7 @@ import java.net.URI;
 import java.net.URL;
 
 @RestController
+@RequestMapping("/url")
 public class Controller {
 
     @Autowired
