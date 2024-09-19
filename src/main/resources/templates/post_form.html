@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Create New Post</title>
+</head>
+<body>
+<h1>Create New Blog Post</h1>
+<form th:action="@{/editor/post}" th:object="${blogPost}" method="post">
+    <div>
+        <label for="title">Title:</label>
+        <input type="text" id="title" th:field="*{title}" />
+    </div>
+    <div>
+        <label for="summary">Summary:</label>
+        <input type="text" id="summary" th:field="*{summary}" />
+    </div>
+    <div>
+        <label for="post">Content:</label>
+        <textarea id="post" th:field="*{post}" rows="10" cols="30"></textarea>
+    </div>
+    <div>
+        <button type="submit">Save</button>
+    </div>
+</form>
+</body>
+</html>

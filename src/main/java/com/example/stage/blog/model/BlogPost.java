@@ -8,6 +8,9 @@ public class BlogPost {
     private String summary;
     private String post;
 
+    public BlogPost() {
+    }
+
     public BlogPost(String title, String summary, String post) {
         this.id = UUID.randomUUID().toString();
         this.title = title;
