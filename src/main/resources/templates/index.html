@@ -1,21 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Blog</title>
+    <title>All Blog Posts</title>
 </head>
 <body>
-<h1>My Blog</h1>
-<div>
-    <ul>
-         This is the Thymeleaf syntax to aiterate over posts
-        <li th:each="post : ${posts}">
-            <h2 th:text="${post.title}"></h2>
-            <p th:text="${post.post}"></p>
-            <p th:text="${post.summary}"></p>
-        </li>
-    </ul>
-</div>
+<h1>All Blog Posts</h1>
+<ul>
+    <li th:each="post : ${posts}">
+        <h2 th:text="${post.title}">Post Title</h2>
+        <p><strong>Summary:</strong> <span th:text="${post.summary}">Post Summary</span></p>
+        <p><strong>Content:</strong> <span th:text="${post.post}">Post Content</span></p>
+        <p><strong>Time:</strong> <span th:text="${post.publishedDateTime}">Post Date</span></p>
+        <a th:href="@{/editor/post/edit/{id}(id=${post.id})}">Edit</a>
+    </li>
+</ul>
 </body>
 </html>

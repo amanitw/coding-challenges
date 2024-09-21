@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
@@ -48,6 +49,22 @@ public class BlogController {
         blogPost.setId(UUID.randomUUID().toString());
         blogService.save(blogPost);
         return "redirect:/blog";
+    }
+
+
+    @GetMapping("/editor/post/edit/{id}")
+    public String showEditForm(@PathVariable String id, Model model) {
+        BlogPost blogPost = blogService.getBlogPost(id);
+        model.addAttribute("blogPost", blogPost);
+        return "edit_post_form";
+    }
+
+    @PostMapping("/editor/post/edit/{id}")
+    public String updatePost(@PathVariable String id, @ModelAttribute BlogPost blogPost) {
+        blogPost.setId(id);
+       // blogPost.setPublishedDate(blogPost.getPublishedDate() != null ? blogPost.getPublishedDate() : LocalDateTime.now());  // Set or update published date
+        blogService.save(blogPost);  // Save the updated post
+        return "redirect:/blog";  // Redirect to the blog list
     }
 
 }

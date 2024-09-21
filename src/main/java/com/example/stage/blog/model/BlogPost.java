@@ -1,5 +1,6 @@
 package com.example.stage.blog.model;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 public class BlogPost {
@@ -7,6 +8,8 @@ public class BlogPost {
     private String title;
     private String summary;
     private String post;
+
+    private LocalDateTime publishedDateTime;
 
     public BlogPost() {
     }
@@ -48,5 +51,13 @@ public class BlogPost {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public LocalDateTime getPublishedDateTime() {
+        return publishedDateTime;
+    }
+
+    public void setPublishedDateTime(LocalDateTime publishedDateTime) {
+        this.publishedDateTime = publishedDateTime;
     }
 }
