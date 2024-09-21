@@ -11,7 +11,6 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @Repository
-@Primary
 public class InMemoryBlogRepository implements BlogRepository {
     private Map<String,BlogPost> postMap = new HashMap<>();
 

@@ -66,7 +66,7 @@ public class BlogController {
     @PostMapping("/editor/post/edit/{id}")
     public String updatePost(@PathVariable String id, @ModelAttribute BlogPost blogPost) {
         blogPost.setId(id);
-       // blogPost.setPublishedDate(blogPost.getPublishedDate() != null ? blogPost.getPublishedDate() : LocalDateTime.now());  // Set or update published date
+        //blogPost.getPublishedDateTime(blogPost.publishedDateTime() != null ? blogPost.getPublishedDate() : LocalDateTime.now());  // Set or update published date
         blogService.save(blogPost);  // Save the updated post
         return "redirect:/blog";  // Redirect to the blog list
     }

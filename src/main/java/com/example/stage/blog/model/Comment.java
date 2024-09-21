@@ -3,6 +3,9 @@ package com.example.stage.blog.model;
 public class Comment implements PostEntity{
     private String comment;
 
+    public Comment() {
+    }
+
     public Comment(String comment) {
         this.comment = comment;
     }
