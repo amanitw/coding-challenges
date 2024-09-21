@@ -11,6 +11,22 @@
         <p><strong>Summary:</strong> <span th:text="${post.summary}">Post Summary</span></p>
         <p><strong>Content:</strong> <span th:text="${post.post}">Post Content</span></p>
         <p><strong>Time:</strong> <span th:text="${post.publishedDateTime}">Post Date</span></p>
+
+        <h2>Comments</h2>
+        <ul>
+            <li th:each="comment : ${post.comments}">
+                <p th:text="${comment.comment}">Comment text</p>
+            </li>
+        </ul>
+
+        <h3>Add a Comment</h3>
+        <form th:action="@{/posts/{id}/comment(id=${post.id})}" method="post">
+            <label for="comment">Comment:</label>
+            <textarea id="comment" name="comment" rows="5" required></textarea><br/>
+            <button type="submit">Submit Comment</button>
+        </form>
+
+
         <a th:href="@{/editor/post/edit/{id}(id=${post.id})}">Edit</a>
     </li>
 </ul>

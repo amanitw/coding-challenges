@@ -1,5 +1,6 @@
 package com.example.stage.blog.controller;
 
+import com.example.stage.blog.algo.SortBlogs;
 import com.example.stage.blog.model.BlogPost;
 import com.example.stage.blog.service.BlogService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,12 @@ public class BlogController {
     @Autowired
     private BlogService blogService;
 
+    @Autowired
+    private SortBlogs sortBlogs;
+
     @GetMapping("/blog")
     public String getBlog(Model model){
-        List<BlogPost> blogs = blogService.getAll();
+        List<BlogPost> blogs = sortBlogs.sort(blogService.getAll());
         model.addAttribute("posts",blogs);
         return "index";
     }
@@ -67,4 +71,9 @@ public class BlogController {
         return "redirect:/blog";  // Redirect to the blog list
     }
 
+    @PostMapping("/posts/{id}/comment")
+    public String showCommentForm(@PathVariable String id, @RequestParam("comment") String commentText){
+        blogService.addComment(id,commentText);
+        return "redirect:/blog";
+    }
 }

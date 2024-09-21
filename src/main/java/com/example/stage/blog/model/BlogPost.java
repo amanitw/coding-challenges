@@ -1,6 +1,8 @@
 package com.example.stage.blog.model;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
 public class BlogPost {
@@ -9,9 +11,12 @@ public class BlogPost {
     private String summary;
     private String post;
 
+    List<Comment> comments;
+
     private LocalDateTime publishedDateTime;
 
     public BlogPost() {
+        comments = new ArrayList<>();
     }
 
     public BlogPost(String title, String summary, String post) {
@@ -59,5 +64,17 @@ public class BlogPost {
 
     public void setPublishedDateTime(LocalDateTime publishedDateTime) {
         this.publishedDateTime = publishedDateTime;
+    }
+
+    public List<Comment> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<Comment> comments) {
+        this.comments = comments;
+    }
+
+    public void addComment(Comment comment){
+        this.comments.add(comment);
     }
 }
