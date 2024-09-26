@@ -1,7 +1,7 @@
 package com.example.stage;
 
-import com.example.stage.blog.dll.DoublyLinkedList;
-import com.example.stage.blog.dll.Node;
+import com.example.stage.lld.snakeandladder.model.*;
+import com.example.stage.lld.snakeandladder.service.Game;
 import com.example.stage.loadbalancer.TCPServer;
 import com.example.stage.post.cache.Cache;
 import com.example.stage.post.cache.FileCache;
@@ -14,6 +14,7 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
+import java.util.Arrays;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,32 +39,17 @@ public class Application {
 
 //		TCPServer tcpServer = new TCPServer();
 //		tcpServer.startup();
-
-		DoublyLinkedList dll = new DoublyLinkedList();
-		dll.add(1);
-		dll.add(2);
-		dll.add(3);
-		dll.add(4);
-		dll.print();
-		System.out.println("---");
-		dll.delete(1);
-		dll.print();
-		System.out.println("---");
-		dll.delete(4);
-		dll.print();
-		System.out.println("---");
-		dll.add(1);
-		dll.print();
-		System.out.println("---");
-		dll.delete(2);
-		dll.delete(1);
-		dll.delete(3);
-		dll.print();
-		System.out.println("---");
-		dll.add(2);
-		dll.print();
-		System.out.println("---");
-
+		Board board = new Board(100,new Dice(6));
+		board.setBoardEntity(2,new Ladder(2,50));
+		board.setBoardEntity(4,new Ladder(4,76));
+		board.setBoardEntity(8,new Ladder(8,25));
+		board.setBoardEntity(16,new Snake(16,2));
+		board.setBoardEntity(26,new Snake(26,20));
+		board.setBoardEntity(53,new Snake(53,3));
+		Player p1 = new Player("1","aman");
+		Player p2 = new Player("2","raman");
+		Game game = new Game(board, Arrays.asList(p1,p2));
+		game.startGame();
 	}
 
 }
